@@ -79,6 +79,7 @@ import { ReactComponent as LineDashedIcon } from "assets/icons/control/line_dash
 import { ReactComponent as TableIcon } from "assets/icons/ads/tables.svg";
 import { ReactComponent as ColumnIcon } from "assets/icons/ads/column.svg";
 import { ReactComponent as SupportIcon } from "assets/icons/ads/support.svg";
+import { ReactComponent as SettingIcon } from "assets/icons/control/settings.svg";
 
 import styled from "styled-components";
 import { CommonComponentProps, Classes } from "./common";
@@ -220,6 +221,7 @@ export const IconCollection = [
   "tables",
   "column",
   "support",
+  "setting",
 ] as const;
 
 export type IconName = typeof IconCollection[number];
@@ -547,6 +549,9 @@ const Icon = forwardRef(
 
       case "column":
         returnIcon = <ColumnIcon />;
+        break;
+      case "setting":
+        returnIcon = <SettingIcon />;
         break;
 
       case "support":

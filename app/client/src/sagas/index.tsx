@@ -41,6 +41,7 @@ import gitSyncSagas from "./GitSyncSagas";
 import log from "loglevel";
 import * as sentry from "@sentry/react";
 import formEvaluationChangeListener from "./FormEvaluationSaga";
+import SuperUserSagas from "./SuperUserSagas";
 const sagas = [
   initSagas,
   pageSagas,
@@ -81,6 +82,7 @@ const sagas = [
   selectionCanvasSagas,
   draggingCanvasSagas,
   gitSyncSagas,
+  SuperUserSagas,
 ];
 
 export function* rootSaga(sagasToRun = sagas) {

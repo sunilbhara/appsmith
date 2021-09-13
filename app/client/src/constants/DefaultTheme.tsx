@@ -1222,6 +1222,9 @@ type ColorType = {
   welcomePage?: {
     text: string;
   };
+  settings: {
+    link: string;
+  };
 };
 
 const editorBottomBar = {
@@ -2015,6 +2018,9 @@ export const dark: ColorType = {
   welcomePage: {
     text: lightShades[5],
   },
+  settings: {
+    link: "#716E6E",
+  },
 };
 
 export const light: ColorType = {
@@ -2604,6 +2610,9 @@ export const light: ColorType = {
   link: "#f86a2b",
   welcomePage: {
     text: lightShades[5],
+  },
+  settings: {
+    link: "#716E6E",
   },
 };
 

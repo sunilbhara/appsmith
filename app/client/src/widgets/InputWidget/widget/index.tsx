@@ -167,7 +167,7 @@ class InputWidget extends BaseWidget<InputWidgetProps, WidgetState> {
           },
           {
             helpText: "Changes the type of currency",
-            propertyName: "currencyCountryCode",
+            propertyName: "defaultCurrencyCountryCode",
             label: "Currency",
             enableSearch: true,
             dropdownHeight: "195px",
@@ -558,6 +558,8 @@ class InputWidget extends BaseWidget<InputWidgetProps, WidgetState> {
           }
         }()
       }}`,
+      countryCode: `{{this.selectedPhoneNumberCountryCode ? this.selectedPhoneNumberCountryCode : this.phoneNumberCountryCode}}`,
+      currencyCountryCode: `{{this.selectedCurrencyCountryCode ? this.selectedCurrencyCountryCode : this.defaultCurrencyCountryCode}}`,
       value: `{{this.text}}`,
     };
   }
@@ -594,7 +596,10 @@ class InputWidget extends BaseWidget<InputWidgetProps, WidgetState> {
   onCurrencyTypeChange = (code?: string) => {
     const currencyCountryCode = code;
     if (this.props.renderMode === RenderModes.CANVAS) {
-      super.updateWidgetProperty("currencyCountryCode", currencyCountryCode);
+      super.updateWidgetProperty(
+        "defaultCurrencyCountryCode",
+        currencyCountryCode,
+      );
     } else {
       this.props.updateWidgetMetaProperty(
         "selectedCurrencyCountryCode",
@@ -762,6 +767,8 @@ export interface InputWidgetProps extends WidgetProps {
   noOfDecimals?: number;
   allowCurrencyChange?: boolean;
   phoneNumberCountryCode?: string;
+  countryCode?: string;
+  defaultCurrencyCountryCode?: string;
   decimalsInCurrency?: number;
   defaultText?: string | number;
   tooltip?: string;

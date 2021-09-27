@@ -102,6 +102,7 @@ import history from "utils/history";
 import getFeatureFlags from "utils/featureFlags";
 import { setIsImportAppViaGitModalOpen } from "actions/gitSyncActions";
 import TooltipComponent from "components/ads/Tooltip";
+import { TOOLTIP_HOVER_ON_DELAY } from "constants/AppConstants";
 
 const OrgDropDown = styled.div`
   display: flex;
@@ -811,6 +812,7 @@ function ApplicationsSection(props: any) {
                             el.username +
                             (currentUser?.email === el.username ? " (you)" : "")
                           }
+                          hoverOpenDelay={TOOLTIP_HOVER_ON_DELAY}
                           key={el.username}
                           position={Position.BOTTOM}
                         >

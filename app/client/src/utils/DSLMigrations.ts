@@ -35,6 +35,7 @@ import { renameKeyInObject } from "./helpers";
 import { ColumnProperties } from "widgets/TableWidget/component/Constants";
 import { migrateMenuButtonWidgetButtonProperties } from "./migrations/MenuButtonWidget";
 import { migrateResizableModalWidgetProperties } from "./migrations/ModalWidget";
+import { migrateInputWidgetDefaultSelectedPhoneNumberCode } from "./migrations/InputWidget";
 
 /**
  * adds logBlackList key for all list widget children
@@ -919,6 +920,11 @@ export const transformDSL = (currentDSL: ContainerWidgetProps<WidgetProps>) => {
 
   if (currentDSL.version === 38) {
     currentDSL = migrateResizableModalWidgetProperties(currentDSL);
+    currentDSL.version = 39;
+  }
+
+  if (currentDSL.version === 39) {
+    currentDSL = migrateInputWidgetDefaultSelectedPhoneNumberCode(currentDSL);
     currentDSL.version = LATEST_PAGE_VERSION;
   }
 

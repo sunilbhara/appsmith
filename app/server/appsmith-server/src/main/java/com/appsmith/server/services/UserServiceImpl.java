@@ -879,6 +879,7 @@ public class UserServiceImpl extends BaseService<UserRepository, User, String> i
                     profile.setAnonymous(user.isAnonymous());
                     profile.setEnabled(user.isEnabled());
                     profile.setCommentOnboardingState(userData.getCommentOnboardingState());
+                    profile.setPhotoId(userData.getProfilePhotoAssetId());
 
                     profile.setSuperUser(policyUtils.isPermissionPresentForUser(
                             userFromDb.getPolicies(),

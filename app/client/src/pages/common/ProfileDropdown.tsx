@@ -14,12 +14,12 @@ import { ReduxActionTypes } from "constants/ReduxActionConstants";
 import ProfileImage from "./ProfileImage";
 import { PopperModifiers } from "@blueprintjs/core";
 import { PROFILE } from "constants/routes";
-import UserApi from "api/UserApi";
 type TagProps = CommonComponentProps & {
   onClick?: (text: string) => void;
   userName?: string;
   name: string;
   modifiers?: PopperModifiers;
+  photoId?: string;
 };
 
 const ProfileMenuStyle = createGlobalStyle`
@@ -76,7 +76,7 @@ const UserNameWrapper = styled.div`
 export default function ProfileDropdown(props: TagProps) {
   const Profile = (
     <ProfileImage
-      source={`/api/${UserApi.photoURL}`}
+      source={props.photoId ? `/api/v1/assets/${props.photoId}` : ""}
       userName={props.name || props.userName}
     />
   );

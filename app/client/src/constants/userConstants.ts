@@ -9,6 +9,7 @@ export type User = {
   name: string;
   gender: Gender;
   emptyInstance?: boolean;
+  photoId?: string;
 };
 
 export interface UserApplication {

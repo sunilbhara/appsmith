@@ -29,7 +29,7 @@ describe("Validate Validators", () => {
         allowedValues: ["abc", "123", "mno", "test"],
       },
     };
-    const inputs = ["abc", "xyz", undefined, null, {}, [], 123];
+    const inputs = ["abc", "xyz", undefined, null, {}, [], 123, ""];
     const expected = [
       {
         isValid: true,
@@ -63,6 +63,64 @@ describe("Validate Validators", () => {
       {
         isValid: true,
         parsed: "123",
+      },
+      {
+        isValid: true,
+        parsed: "",
+      },
+    ];
+    inputs.forEach((input, index) => {
+      const result = validate(validation, input, DUMMY_WIDGET);
+      expect(result).toStrictEqual(expected[index]);
+    });
+  });
+
+  it("correctly validates text when required is set to false", () => {
+    const validation = {
+      type: ValidationTypes.TEXT,
+      params: {
+        default: "abc",
+        allowedValues: ["abc", "123", "mno", "test"],
+      },
+    };
+    const inputs = [""];
+    const expected = [
+      {
+        isValid: true,
+        parsed: "",
+      },
+    ];
+    inputs.forEach((input, index) => {
+      const result = validate(validation, input, DUMMY_WIDGET);
+      expect(result).toStrictEqual(expected[index]);
+    });
+  });
+
+  it("correctly validates strict text", () => {
+    const validation = {
+      type: ValidationTypes.TEXT,
+      params: {
+        required: true,
+        default: "abc",
+        allowedValues: ["abc", "123", "mno", "test"],
+        strict: true,
+      },
+    };
+    const inputs = ["abc", "xyz", 123];
+    const expected = [
+      {
+        isValid: true,
+        parsed: "abc",
+      },
+      {
+        isValid: false,
+        parsed: "abc",
+        message: "Value is not allowed",
+      },
+      {
+        isValid: false,
+        parsed: "abc",
+        message: `${WIDGET_TYPE_VALIDATION_ERROR} string ( abc | 123 | mno | test )`,
       },
     ];
     inputs.forEach((input, index) => {
@@ -799,6 +857,30 @@ describe("Validate Validators", () => {
 
   it("correctly validates object array when required is false", () => {
     const inputs = [""];
+
+    const config = {
+      type: ValidationTypes.OBJECT_ARRAY,
+      params: {
+        required: false,
+        default: [{ id: 1, name: "alpha" }],
+      },
+    };
+
+    const expected = [
+      {
+        isValid: true,
+        parsed: [{ id: 1, name: "alpha" }],
+      },
+    ];
+
+    inputs.forEach((input, index) => {
+      const result = validate(config, input, DUMMY_WIDGET);
+      expect(result).toStrictEqual(expected[index]);
+    });
+  });
+
+  it("correctly validates object array when required is false", () => {
+    const inputs = [[]];
 
     const config = {
       type: ValidationTypes.OBJECT_ARRAY,

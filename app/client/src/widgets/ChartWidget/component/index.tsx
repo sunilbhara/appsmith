@@ -48,6 +48,8 @@ export interface ChartComponentProps {
   chartData: AllChartData;
   chartName: string;
   chartType: ChartType;
+  customFusionChartType: string;
+  customFusionChartConfig1: any;
   customFusionChartConfig: CustomFusionChartConfig;
   isVisible?: boolean;
   setAdaptiveYMin: boolean;
@@ -311,15 +313,15 @@ class ChartComponent extends React.Component<ChartComponentProps> {
   };
 
   getCustomFusionChartDataSource = () => {
-    let config = this.props.customFusionChartConfig as CustomFusionChartConfig;
-    if (config && config.dataSource) {
+    let config = this.props.customFusionChartConfig1;
+    if (config) {
       config = {
-        ...config,
+        type: this.props.customFusionChartType,
         dataSource: {
-          ...config.dataSource,
+          ...config,
           chart: {
-            ...config.dataSource.chart,
-            caption: this.props.chartName || config.dataSource.chart.caption,
+            ...config.chart,
+            caption: this.props.chartName || config.chart.caption,
             setAdaptiveYMin: this.props.setAdaptiveYMin ? "1" : "0",
           },
         },
@@ -353,12 +355,8 @@ class ChartComponent extends React.Component<ChartComponentProps> {
   getSeriesTitle = (data: any) => {
     // custom chart have mentioned seriesName in dataSource
     if (this.props.chartType === "CUSTOM_FUSION_CHART") {
-      // custom chart have mentioned seriesName in dataSource
-      return get(
-        this.props,
-        `customFusionChartConfig.dataSource.seriesName`,
-        "",
-      );
+      // custom chart have mentioned seriesName in customChartConfig
+      return get(this.props, `customFusionChartConfig1.seriesName`, "");
     } else {
       const dataLength = this.getDatalength();
       // if pie chart or other chart have single dataset,
@@ -443,6 +441,40 @@ class ChartComponent extends React.Component<ChartComponentProps> {
       this.chartInstance = null;
     }
   }
+
+  /*
+{
+    "renderAt": "amy0sri7hlchart-container",
+    "width": "100%",
+    "height": "100%",
+    "events": {},
+    "type": "column2d",
+    "dataSource": {
+        "chart": {
+            "caption": "Sales Report",
+            "xAxisName": "Product Line",
+            "yAxisName": "Revenue($)",
+            "theme": "fusion",
+            "setAdaptiveYMin": "0"
+        },
+        "data": [
+            {
+                "label": "Product1",
+                "value": 20000
+            },
+            {
+                "label": "Product2",
+                "value": 22000
+            },
+            {
+                "label": "Product3",
+                "value": 32000
+            }
+        ]
+    },
+    "dataFormat": "JSON"
+}
+*/
 
   componentDidUpdate(prevProps: ChartComponentProps) {
     if (!_.isEqual(prevProps, this.props)) {

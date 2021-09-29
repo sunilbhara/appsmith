@@ -67,6 +67,35 @@ export default [
         },
       },
       {
+        helpText: "Fusion Chart Custom config type",
+        placeholderText: "Fusion Chart Type",
+        propertyName: "customFusionChartType",
+        label: "Custom Chart Type",
+        controlType: "INPUT_TEXT",
+        isBindProperty: true,
+        isTriggerProperty: false,
+        validation: {
+          type: ValidationTypes.TEXT,
+        },
+        // hidden: (props: ChartWidgetProps) => {
+        //   return props.chartType !== "CUSTOM_FUSION_CHART";
+        // },
+      },
+      {
+        helpText: "Fusion Chart Custom config see docs.appsmith.com",
+        placeholderText: "Fusion Chart Config",
+        propertyName: "customFusionChartConfig1",
+        label: "Custom Chart Config",
+        controlType: "INPUT_TEXT",
+        isBindProperty: true,
+        isTriggerProperty: false,
+        validation: {
+          type: ValidationTypes.OBJECT,
+        },
+        dependencies: ["chartType"],
+        evaluationSubstitutionType: EvaluationSubstitutionType.SMART_SUBSTITUTE,
+      },
+      {
         helpText: "Configure a Custom FusionChart see docs.appsmith.com",
         placeholderText: `Fusion Chart Config`,
         propertyName: "customFusionChartConfig",

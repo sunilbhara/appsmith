@@ -18,7 +18,7 @@ Would you like to contribute your app? Just write in to akshay@appsmith.com.
 
 1. [Applicant Tracker System](https://app.appsmith.com/applications/5f43bce13697fd5df1c52ce4/pages/5f43c39c3697fd5df1c52d50)
 
-> This application will need you to connect to your instance of Postgres, but once done, you will be able to manage the entire lifecycle of applicants in your hiring pipeline. We've also added Google Calendar API calls so you can schedule interviews directly from this application.
+> This application will need you to connect to your instance of Postgres, but once done, you will be able to manage the entire lifecycle of applicants in your hiring pipeline. We've also added Google Calendar API calls so you can schedule interviews directly from this application and do your efficiently.
 
 2. [Calendly in Appsmith](https://app.appsmith.com/applications/600186605b452f525458d6d2/pages/600186605b452f525458d6d4)
 

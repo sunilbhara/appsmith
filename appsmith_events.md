@@ -4,7 +4,7 @@
   
 -----------------
   
-Appsmith Events are a dedicated time slot every Thursday at 10am PT in which our team will spend time with our users in the form of a community discussion, Live Demo or webinar. It gives us an opportunity to interact with the community, understand your concerns and communicate our thinking to you.
+Appsmith Events are a dedicated time slot every Thursday at 10am PT in which our team will spend time with our users in the form of a community discussion, Live Demo or webinar. It gives us an opportunity to interact with the community, understand your concerns and communicate our thinking to you. It also develops team sprit in you.
 
 The events are recorded and will be put up in our [youtube channel](https://www.youtube.com/appsmith) and website (coming soon!) also.
 
